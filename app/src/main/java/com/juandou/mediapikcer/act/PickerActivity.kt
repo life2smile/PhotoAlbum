@@ -106,7 +106,7 @@ class PickerActivity : AppCompatActivity() {
         }
     }
 
-    private inner class ScanHandler(activity: PickerActivity) : Handler() {
+    private class ScanHandler(activity: PickerActivity) : Handler() {
         val weakActivity = WeakReference<PickerActivity>(activity)
 
         override fun handleMessage(msg: Message?) {
