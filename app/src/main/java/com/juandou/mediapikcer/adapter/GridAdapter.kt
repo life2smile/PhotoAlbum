@@ -31,22 +31,18 @@ class GridAdapter(context: Context) : RecyclerView.Adapter<GridAdapter.GridViewH
             val iterator = it
             it.takeIf {
                 it.isImage()
-            }.let {
-                it?.let {
+            }?.let {
                     viewHolder.duration.visibility = View.GONE
                     viewHolder.image.setImageURI(Uri.fromFile(File(it.filePath)))
                     viewHolder.image.visibility = View.VISIBLE
-                }
             }
 
 
             it.takeIf { it.isVideo() }
-                    .let {
-                        it?.let {
+                    ?.let {
                             viewHolder.duration.text = iterator.formatDuration()
                             viewHolder.duration.visibility = View.VISIBLE
                             viewHolder.image.setImageURI(Uri.fromFile(File(it.thumbNailPath)))
-                        }
                     }
         }
     }
