@@ -116,7 +116,7 @@ object VideoScanHelper {
                     val bitmap = createVideoThumbnail(filePath)
                     bitmap?.let {
                         out = FileOutputStream(file)
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, out)
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, out)//如果想要更清晰的预览图，这里可以设置100或者png，即不压缩
                         out?.flush()
                         bitmap.recycle()
                     }

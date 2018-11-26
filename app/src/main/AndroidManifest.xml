@@ -22,6 +22,10 @@
         <activity android:name=".act.PickerActivity">
 
         </activity>
+
+        <activity android:name=".act.PreviewAct">
+
+        </activity>
     </application>
 
 </manifest>
