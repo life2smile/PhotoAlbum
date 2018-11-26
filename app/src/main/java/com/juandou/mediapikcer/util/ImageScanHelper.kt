@@ -30,11 +30,14 @@ object ImageScanHelper {
         var cursor: Cursor? = null
         try {
             cursor = context.contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, mediaColumns, null, null, sortOrder);
-            if (cursor!!.moveToFirst()) {
-                parseData(cursor, handler)
+
+            cursor?.let {
+                if (it.moveToFirst()) {
+                    parseData(cursor, handler)
+                }
             }
         } finally {
-            cursor!!.close()
+            cursor?.close()
         }
 
     }

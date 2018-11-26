@@ -147,14 +147,14 @@ object VideoScanHelper {
         }
 
         bitmap?.let {
-            val width: Int = bitmap!!.width
-            val height: Int = bitmap!!.height
+            val width: Int = it.width
+            val height: Int = it.height
             val max: Int = Math.max(width, height)
             if (max > 512) {
                 val scale: Float = 512f / max
                 val w = Math.round(scale * width)
                 val h = Math.round(scale * height)
-                bitmap = Bitmap.createScaledBitmap(bitmap, w, h, true)
+                bitmap = Bitmap.createScaledBitmap(it, w, h, true)
             }
         }
         return bitmap
