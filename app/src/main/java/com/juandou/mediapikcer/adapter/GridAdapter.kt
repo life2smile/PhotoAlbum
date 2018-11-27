@@ -2,7 +2,6 @@ package com.juandou.mediapikcer.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -15,7 +14,7 @@ import com.juandou.mediapikcer.R
 import com.juandou.mediapikcer.act.PreviewAct
 import com.juandou.mediapikcer.data.MediaData
 import com.juandou.mediapikcer.data.PreviewData
-import java.io.File
+import com.juandou.mediapikcer.util.ImageResizeUtil
 import java.util.*
 
 class GridAdapter(context: Context) : RecyclerView.Adapter<GridAdapter.GridViewHolder>() {
@@ -38,15 +37,19 @@ class GridAdapter(context: Context) : RecyclerView.Adapter<GridAdapter.GridViewH
             it.takeIf {
                 it.isImage()
             }?.let {
+                it.filePath?.let {
                     viewHolder.duration.visibility = View.GONE
-                    viewHolder.image.setImageURI(Uri.fromFile(File(it.filePath)))
+                    viewHolder.image.setImageBitmap(ImageResizeUtil.resize(it, mItemSize, mItemSize))
                     viewHolder.image.visibility = View.VISIBLE
+                }
             }
             it.takeIf { it.isVideo() }
                     ?.let {
                             viewHolder.duration.text = iterator.formatDuration()
                             viewHolder.duration.visibility = View.VISIBLE
-                            viewHolder.image.setImageURI(Uri.fromFile(File(it.thumbNailPath)))
+                        it.thumbNailPath?.let {
+                            viewHolder.image.setImageBitmap(ImageResizeUtil.resize(it, mItemSize, mItemSize))
+                        }
                     }
             viewHolder.image.setOnClickListener {
                 val intent = Intent(mContext, PreviewAct::class.java)
