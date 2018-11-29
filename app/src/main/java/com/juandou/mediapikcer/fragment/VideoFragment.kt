@@ -59,6 +59,7 @@ class VideoFragment : Fragment() {
 
     private fun setListener() {
         mPlayImg?.setOnClickListener {
+            mVideoView?.visibility = View.VISIBLE
             mPlayImg?.visibility = View.GONE
             if (mPrepared) {
                 mFirstFrameImg?.visibility = View.GONE

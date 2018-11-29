@@ -8,6 +8,7 @@
 
     <com.juandou.mediapikcer.view.ResizeVideoView
         android:id="@+id/fragment_preview_video"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center" />
