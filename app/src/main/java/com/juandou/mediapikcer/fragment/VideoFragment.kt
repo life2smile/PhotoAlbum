@@ -151,7 +151,10 @@ class VideoFragment : Fragment() {
     }
 
     private fun pause() {
-        mVideoView?.pause()
+        mVideoView?.let {
+            it.pause()
+            it.seekTo(0)
+        }
         resetStatus()
     }
 
